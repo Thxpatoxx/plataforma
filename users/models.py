@@ -54,7 +54,7 @@ class Modelo(models.Model):
     ancho = models.TextField(max_length=100)
     alto = models.TextField(max_length=100)
     descripcion = models.TextField()
-    foto = models.TextField()
+    foto = models.ImageField(upload_to="photos")
 
     def __str__(self):
         return self.codigo
