@@ -1,0 +1,55 @@
+.cajas{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    border-bottom: 6px solid #228E8C;
+    border-radius: 9px;
+    width: 100%;
+    font-size: 25px;
+}
+.cajass{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    border-bottom: 6px solid #228E8C;
+    border-radius: 9px;
+    margin-left: 120%;
+    width: 100%;
+    font-size: 25px;
+}
+a{
+    text-decoration: none;
+    color: #00ffea;
+}
+a:hover{
+    text-decoration: none;
+    color: #007268;
+}
+tr{
+    width: 100%;
+}
+td{
+    width: 100%;
+}
+input, select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #007a8a;
+    color: white;
+    font-family: ppp;
+    font-size: 20px;
+    text-align: center;
+  }
+input.hs{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.hm{
+    width: 60%;
+    margin-left: 20%;
+}

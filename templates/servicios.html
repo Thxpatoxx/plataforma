@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/listado.css' %}">
+</head>
+
+{% if user.tipo == 'Administrador' or user.tipo == 'Cliente' %}
+  <center><a href="{% url 'nuevo_serv' %}"><img src="https://image.flaticon.com/icons/svg/1907/1907592.svg" style="width: 60px;"></a></center>
+{% endif %}
+
+  
+  <body>
+      <table id="myTable">
+        <div  class="cajas hm">Tecnico | | Codigo | | Precio | | Estado</div>
+        {% for post in posts %}
+          <tr>
+          <td>
+            {% if post.estado == 'PENDIENTE'%}
+            <a href="{% url 'serv_det' pk=post.pk %}">
+              <div class="cajass" style="margin-left: 80%">
+                  {{ post.tecnico }} - 00{{ post.pk }} - {{ post.precio }} - {{ post.estado }}
+                <br>
+              </div>
+              <br>
+            </a>
+            {% elif post.estado == 'TERMINADO' or post.estado == 'CANCELADO' %}
+              <div class="cajass" style="margin-left: 80%;color: brown">
+                  {{ post.tecnico }} - 00{{ post.pk }} - {{ post.precio }} - {{ post.estado }}
+                <br>
+              </div>
+              <br>
+            {% elif post.estado == 'EN PROCESO' %}
+              <a href="{% url 'serv_det' pk=post.pk %}">
+                <div class="cajass" style="margin-left: 80%;color: rgb(106, 128, 11)">
+                    {{ post.tecnico }} - 00{{ post.pk }} - {{ post.precio }} - {{ post.estado }}
+                  <br>
+                </div>
+                <br>
+              </a>
+            {% endif %}
+          </td>
+          </tr> 
+          {% endfor %}
+        </table>
+
+
+<script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+</script>
+
+
+{% endblock %}

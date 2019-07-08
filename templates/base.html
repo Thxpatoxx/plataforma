@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="https://www.egarpi.es/img/cms/sea-waves.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Buenos Aires</title>
+</head>
+<body>
+    <div class="arriba">
+        {% if user.tipo == 'Tecnico' %}
+            <p>Este usuario es: Tecnico</p>
+        {% elif user.tipo == 'Cliente' %}
+            <p>Este usuario es: Cliente</p>
+        {% elif user.tipo == 'Administrador' %}
+            <p>Este usuario es: Administrador</p> |
+            <a href="{% url 'signup' %}">Registrar</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+            Hola {{ user.username }}!!
+            <p><a href="{% url 'logout' %}">Salir</a></p>
+        {% else %}
+            <h3>You are not logged in</h3>
+            <a href="{% url 'login' %}"><h3>Usuario</h3></a>
+            <a href="{% url 'signup' %}"><h3>Registrar</h3></a>
+        {% endif %}
+        {% if user.tipo == 'Administrador' %}
+        <a href="/admin">admin</a>
+        {% endif %}
+    </div>
+    <br>
+    <main>
+        <hr>
+        <h4><a href="{% url 'home' %}"><img src="https://www.flaticon.com/premium-icon/icons/svg/1887/1887012.svg" style="width: 40px;" alt="">Inicio</a></h4>
+        
+        {% if user.is_authenticated %}
+        <h4><a href="{% url 'stock' %}"><img src="https://image.flaticon.com/icons/svg/1493/1493715.svg" style="width: 40px;" alt="">Stock</a></h4>
+        <h4><a href="{% url 'servicio' %}"><img src="https://www.flaticon.com/premium-icon/icons/svg/1652/1652223.svg" style="width: 40px;" alt="">Servicios</a></h4>
+        {% endif %}
+        <br>
+        <br>
+        {% block content %}
+        {% endblock %}
+        <hr>
+    </main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/Forms.css' %}">
+</head>
+<div class="caja">
+    <h2>Agregar Producto</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.modelo }} <button class="button" style="vertical-align:middle; width: 40px;height: 40px;font-size: 30px" type=""><a href="/admin/users/modelo/add/">+</a></button>
+        <br>
+        {{ form.estado }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>
+{% endblock %}

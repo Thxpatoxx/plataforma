@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+{% for post in posts %}
+  <div class="cajav">
+    <br>
+    <h4 id="title">modelo: {{ post.codigo }}</h4>
+    <br>
+    <div class="foto">Peso: {{ post.peso }} || Largo: {{ post.largo }}</div>
+    <div class="foto">Ancho: {{ post.ancho }} || Alto: {{ post.alto }}</div>
+    <div class="foto"><h3>| Precio: {{ post.precio }} |</h3></div>
+    <br>
+    <div class="foto">
+      <br>
+      <img src="{{ post.foto.url }}" alt="">
+    </div>
+    <br>
+    <div class="foto">
+      {{ post.descripcion }}
+    </div>
+    <br>
+  </div>
+  <br>
+{% endfor %}
+<br>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/compra.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Forms.css' %}">
+</head>
+    <div class="caja">
+        <div class="fotostock">
+            <h2>
+                <img src="{{ post.modelo.foto.url }}" alt="">
+                | Modelo: {{ post.modelo.codigo }}
+            </h2>
+        </div>
+        <div class="Textos">
+            <br>
+            <h5>Detalle:</h5>
+            <h6>Codigo: 00{{ post.pk}}</h6>
+            <h6>Alto: {{ post.modelo.alto }} - Ancho: {{ post.modelo.ancho }}</h6>
+            <h6>Largo: {{ post.modelo.largo }} - Peso: {{ post.modelo.peso }}</h6>
+            <h6>Descripcion: {{ post.modelo.descripcion }}</h6>
+            <center><h3>------------------</h3></center>
+            <h3> | Precio: {{ post.modelo.precio }} | | Estado: {{ post.estado }} | </h3>
+            <br>
+            <center>
+                <button class="button" style="vertical-align:middle" type="submit"><span>Comprar</span></button>
+            </center>
+            <br>
+        </div>
+    </div>
+{% endblock %}
