@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from .forms import CustomUserCreationForm,Nuevo_ProdForm,Nuevo_ServForm,Nuevo_EditServForm
+from .forms import CustomUserCreationForm,Nuevo_ProdForm,Nuevo_ServForm,Nuevo_EditServForm,Nuevo_EditProdForm
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import Producto,Modelo,Servicio
 from django.db.models import Count
@@ -15,7 +15,7 @@ def stock(request):
 def servicio(request):
     posts = Servicio.objects.all()
     return render(request, 'servicios.html', {'posts': posts})
-###################################################################
+##################################################################
 def compra(request, pk):
     post = get_object_or_404(Producto, pk=pk)
     return render(request, 'compra.html', {'post': post})
@@ -60,6 +60,18 @@ def edit_serv(request, pk):
     else:
         form = Nuevo_EditServForm(instance=post)
     return render(request, 'nuevo_serv.html', {'form': form})
+def edit_prod(request, pk):
+    post = get_object_or_404(Producto, pk=pk)
+    if request.method == "POST":
+        form = Nuevo_EditProdForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.estado = 'NO DISPONIBLE'
+            post.save()
+            return redirect('stock')
+    else:
+        form = Nuevo_EditProdForm(instance=post)
+    return render(request, 'prod_edit.html', {'form': form})
 ###################################################################
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm

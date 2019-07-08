@@ -9,10 +9,11 @@
 <div class="caja">
     <h2>Agregar Producto</h2>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.modelo }} <button class="button" style="vertical-align:middle; width: 40px;height: 40px;font-size: 30px" type=""><a href="/admin/users/modelo/add/">+</a></button>
+        Modelo: {{ form.modelo }} <button class="button" style="vertical-align:middle; width: 40px;height: 40px;font-size: 30px" type=""><a href="/admin/users/modelo/add/">+</a></button>
         <br>
-        {{ form.estado }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        Estado: {{ form.estado }}
+        <br>
+        <button class="button" style="vertical-align:middle" type="submit"><span>Agregar</span></button>
     </form>
 </div>
 {% endblock %}

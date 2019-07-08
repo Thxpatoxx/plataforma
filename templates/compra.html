@@ -24,7 +24,7 @@
             <h3> | Precio: {{ post.modelo.precio }} | | Estado: {{ post.estado }} | </h3>
             <br>
             <center>
-                <button class="button" style="vertical-align:middle" type="submit"><span>Comprar</span></button>
+                    <a class="btn btn-default" href="{% url 'edit_prod' pk=post.pk %}"><button class="button" style="vertical-align:middle" type="submit"><span>Comprar</span></button></a>
             </center>
             <br>
         </div>

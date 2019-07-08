@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/Forms.css' %}">
+</head>
+<div class="caja">
+    <h2>Aceptar Pago?</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" style="vertical-align:middle" type="submit"><span>Aceptar</span></button>
+    </form>
+</div>
+{% endblock %}

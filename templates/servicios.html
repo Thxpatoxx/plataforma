@@ -31,7 +31,7 @@
                 <br>
               </div>
               <br>
-            {% elif post.estado == 'EN PROCESO' %}
+            {% elif post.estado == 'EN PROCESO'%}
               <a href="{% url 'serv_det' pk=post.pk %}">
                 <div class="cajass" style="margin-left: 80%;color: rgb(106, 128, 11)">
                     {{ post.tecnico }} - 00{{ post.pk }} - {{ post.precio }} - {{ post.estado }}

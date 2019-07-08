@@ -14,6 +14,11 @@ class Nuevo_ServForm(forms.ModelForm):
             'hora_atencion',
             'descripcion_cliente',
             )
+class Nuevo_EditProdForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = (
+            )
             
 class Nuevo_EditServForm(forms.ModelForm):
     class Meta:
